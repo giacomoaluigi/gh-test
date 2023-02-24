@@ -1,5 +1,16 @@
 name: CI
-on: [push]
+run-name: ${{ github.event.head_commit.message || github.event.pull_request.title || format('{0}{2}', 'Create env ', inputs.wflow_subject) }}
+
+on:
+  push:
+  workflow_call:
+    inputs:
+      wflow_subject:
+        description: 'A username passed from the caller workflow'
+        default: 'default'
+        required: false
+        type: string
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -9,5 +20,3 @@ jobs:
       - name: Git current branch
         run: |
           git branch
-      #- name: Setup tmate session
-      #  uses: mxschmitt/action-tmate@v3
