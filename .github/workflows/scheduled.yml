@@ -2,7 +2,7 @@ name: Scheduled tasks
 
 on:
   schedule:
-    - cron: "*/2 * * * *"  # every working day
+    - cron: "*/5 * * * *"
 
 jobs:
   reusable_workflow_job:
