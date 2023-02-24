@@ -9,8 +9,10 @@ env:
 
 jobs:
   reusable_workflow_job:
-    uses: ./.github/workflows/test_actions.yml
-    with:
-      wflow_subject: "my-first-env"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ./.github/workflows/test_actions.yml
+      with:
+        wflow_subject: "my-first-env"
 
 
