@@ -1,5 +1,5 @@
 name: CI
-run-name: my CI run name ${{ github.ref }}
+run-name: my CI run name ${{ github.ref_name }}
 
 on: [push]
 jobs:
