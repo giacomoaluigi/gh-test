@@ -1,7 +1,16 @@
 name: CI
-run-name: my CI run name ${{ github.ref_name }}
+run-name: my CI run name ${{ inputs.wflow_subject }}
 
-on: [push]
+on:
+  push:
+  workflow_call:
+    inputs:
+      wflow_subject:
+        description: 'A username passed from the caller workflow'
+        default: 'default'
+        required: false
+        type: string
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,5 +20,3 @@ jobs:
       - name: Git current branch
         run: |
           git branch
-      #- name: Setup tmate session
-      #  uses: mxschmitt/action-tmate@v3
