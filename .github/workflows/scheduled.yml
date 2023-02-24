@@ -8,11 +8,19 @@ env:
   CLUSTER_NAME: "my-cluster"
 
 jobs:
-  reusable_workflow_job:
+#  reusable_workflow_job:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: ./.github/workflows/test_actions.yml
+#      with:
+#        wflow_subject: "my-first-env"
+
+  launch_script:
+    name: Launch scripts
     runs-on: ubuntu-latest
     steps:
-    - uses: ./.github/workflows/test_actions.yml
-      with:
-        wflow_subject: "my-first-env"
-
-
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: ./scripts/launch_workflow.sh
