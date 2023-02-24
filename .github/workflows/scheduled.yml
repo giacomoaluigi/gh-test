@@ -1,0 +1,11 @@
+name: Scheduled tasks
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"  # every working day
+
+jobs:
+  reusable_workflow_job:
+    uses: ./.github/workflows/test_actions.yml
+    with:
+      wflow_subject: "my-first-env"
