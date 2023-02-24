@@ -4,8 +4,13 @@ on:
   schedule:
     - cron: "*/5 * * * *"
 
+env:
+  CLUSTER_NAME: "my-cluster"
+
 jobs:
   reusable_workflow_job:
     uses: ./.github/workflows/test_actions.yml
     with:
       wflow_subject: "my-first-env"
+
+
