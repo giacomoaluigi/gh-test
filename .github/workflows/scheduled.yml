@@ -2,7 +2,7 @@ name: Scheduled tasks
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0 0 * * *"
 
 env:
   CLUSTER_NAME: "my-cluster"
