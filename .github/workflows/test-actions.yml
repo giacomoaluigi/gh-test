@@ -3,7 +3,7 @@ run-name: ${{ github.event.head_commit.message || github.event.pull_request.titl
 
 on:
   push:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       workflow_subject:
         description: 'A username passed from the caller workflow'
