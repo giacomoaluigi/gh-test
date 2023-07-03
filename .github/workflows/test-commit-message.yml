@@ -1,0 +1,23 @@
+name: CI
+run-name: ${{ github.event.head_commit.message || github.event.pull_request.title || format('{0}{1}', 'Create env ', inputs.workflow_subject) }}
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: check apply
+        if: "contains(github.event.head_commit.message, '[apply]')"
+        run: |
+          echo "apply"
+    
+      - name: check not apply
+        if: "!contains(github.event.head_commit.message, '[apply]')"
+        run: |
+          echo "plan"
