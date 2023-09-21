@@ -1,0 +1,62 @@
+
+name: test workflow dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      admin_portal_token:
+        description: 'Session access token'
+        required: true
+        default: get-me-from-UI
+      stage:
+        description: 'stage'
+        default: '"dev"'
+      smoke_test_program:
+        description: 'only hxps ok'
+        default: '"hxps"'
+
+      redrive_subscribed_apps_program:
+        description: 'only hxps ok'
+        default: '"hxpr", "hxts"'
+
+env:
+  E2E_CANARY_SUBSCRIPTION_ID: "c1bd468a-2468-4932-af50-3dfb422e7597"
+  # account apps: hxps
+  E2E_CANARY_ACCOUNT_ID: "a20a83f1-2799-4634-888c-dd2725fbc84d"
+
+jobs:
+  smoke_test:
+    strategy:
+      matrix:
+        program: ${{ fromJSON(format('[{0}]', inputs.smoke_test_program)) }}
+        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
+    environment: "${{ matrix.program }}-${{ matrix.stage }}"
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: smoke_test
+        run: |
+          echo "${{ matrix.program }}-${{ matrix.stage }}"
+
+  redrive_subscribed_apps:
+    strategy:
+      matrix:
+        program: ${{ fromJSON(format('[{0}]', inputs.redrive_subscribed_apps_program)) }}
+        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
+    environment: "${{ matrix.program }}-${{ matrix.stage }}"
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Provision Subscribed App
+        run: |
+          echo "${{ matrix.program }}-${{ matrix.stage }}"
