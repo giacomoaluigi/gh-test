@@ -9,8 +9,8 @@ on:
         required: true
         default: get-me-from-UI
       stage:
-        description: 'stage'
-        default: "dev"
+        description: 'dev or staging'
+        default: '["dev"]'
       smoke_test_program:
         description: 'only hxps ok'
         default: '"hxps"'
@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.smoke_test_program)) }}
-        stage: ${{ inputs.stage }}
+        stage: ${{ fromJSON( inputs.stage ) }}
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
