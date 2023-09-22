@@ -9,8 +9,12 @@ on:
         required: true
         default: get-me-from-UI
       stage:
-        description: 'dev or staging'
-        default: '["dev"]'
+        description: Stage to run in
+        required: true
+        type: choice
+        options:
+          - dev
+          - staging
       smoke_test_program:
         description: 'only hxps ok'
         default: '"hxps"'
@@ -28,7 +32,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.smoke_test_program)) }}
-        stage: ${{ fromJSON( inputs.stage ) }}
+        stage: ${{ inputs.stage }}
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
@@ -46,7 +50,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.redrive_subscribed_apps_program)) }}
-        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
+        stage: ${{ inputs.stage }}
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
