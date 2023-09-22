@@ -10,11 +10,10 @@ on:
         default: get-me-from-UI
       stage:
         description: 'stage'
-        default: '"dev"'
+        default: "dev"
       smoke_test_program:
         description: 'only hxps ok'
         default: '"hxps"'
-
       redrive_subscribed_apps_program:
         description: 'only hxps ok'
         default: '"hxpr", "hxts"'
@@ -29,7 +28,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.smoke_test_program)) }}
-        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
+        stage: ${{ inputs.stage }}
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
