@@ -32,7 +32,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.smoke_test_program)) }}
-        stage: ${{ inputs.stage }}
+        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.redrive_subscribed_apps_program)) }}
-        stage: ${{ inputs.stage }}
+        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
