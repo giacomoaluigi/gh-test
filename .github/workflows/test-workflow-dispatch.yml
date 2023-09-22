@@ -13,8 +13,8 @@ on:
         required: true
         type: choice
         options:
-          - dev
-          - staging
+          - '"dev"'
+          - '"staging"'
       smoke_test_program:
         description: 'only hxps ok'
         default: '"hxps"'
