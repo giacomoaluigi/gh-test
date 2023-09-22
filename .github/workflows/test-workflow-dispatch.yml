@@ -13,8 +13,8 @@ on:
         required: true
         type: choice
         options:
-          - '"dev"'
-          - '"staging"'
+          - dev
+          - staging
       smoke_test_program:
         description: 'only hxps ok'
         default: '"hxps"'
@@ -32,7 +32,7 @@ jobs:
     strategy:
       matrix:
         program: ${{ fromJSON(format('[{0}]', inputs.smoke_test_program)) }}
-        stage: ${{ fromJSON(format('[{0}]', inputs.stage)) }}
+        stage: [${{ inputs.stage }}]
     environment: "${{ matrix.program }}-${{ matrix.stage }}"
 
     runs-on: ubuntu-latest
