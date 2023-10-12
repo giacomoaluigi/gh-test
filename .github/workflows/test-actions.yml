@@ -20,3 +20,6 @@ jobs:
       - name: Git current branch
         run: |
           git branch
+      - name: Get author name
+        id: author
+        run: echo "::set-output name=author::$(git show -s --format=%an)"
