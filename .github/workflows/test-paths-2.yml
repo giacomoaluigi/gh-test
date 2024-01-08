@@ -1,4 +1,4 @@
-name: test paths 1
+name: test paths 2
 
 on:
   pull_request:
