@@ -1,0 +1,32 @@
+name: Prod workflow
+
+on:
+  pull_request:
+    paths:
+      - "prod/**"
+
+jobs:
+  prod-plan:
+    runs-on: ubuntu-latest
+    environment: "prod-plan"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Terraform Plan
+        run: |
+          echo "changed files in prod"
+
+  prod-apply:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    needs: prod-plan
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Terraform Apply
+        run: |
+          echo "Terraform Apply"
