@@ -9,7 +9,6 @@ jobs:
   prod-apply:
     if: github.ref_name == 'main' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    needs: prod-plan
 
     steps:
       - name: Check out repository
