@@ -27,7 +27,6 @@ jobs:
           TODAY=$(date "+%d %h %Y");
           while IFS="," read -r support_week psp ssp
           do
-            echo "RC_VERSION=$VERSION" >> $GITHUB_ENV
             echo "SUPPORT_WEEK=$support_week" >> $GITHUB_ENV
             echo "PSP=$psp" >> $GITHUB_ENV
             echo "SSP=$ssp" >> $GITHUB_ENV
