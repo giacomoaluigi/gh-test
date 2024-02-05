@@ -38,7 +38,8 @@ jobs:
 
       - name: Get PSP Slack ID
         run: |
-          ls -Al
+          cd support_reminder
+          PSP=${{ env.PSP }}
           while IFS="," read -r psp id
           do
             echo "PSP_ID=$id" >> $GITHUB_ENV
@@ -46,6 +47,8 @@ jobs:
 
       - name: Get SSP Slack ID
         run: |
+          cd support_reminder
+          PSP=${{ env.SSP }}
           while IFS="," read -r ssp id
           do
             echo "SSP_ID=$id" >> $GITHUB_ENV
