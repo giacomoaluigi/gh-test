@@ -19,6 +19,9 @@ jobs:
 
 # must check if the file is a valid csv
 
+      - name: test
+        run: |
+          grep $TODAY support_reminder/calendar.csv
 
       - name: Get current PSP and SSP
         run: |
