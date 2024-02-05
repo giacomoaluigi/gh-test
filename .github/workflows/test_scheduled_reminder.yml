@@ -38,6 +38,7 @@ jobs:
 
       - name: Get PSP Slack ID
         run: |
+          ls -Al
           while IFS="," read -r psp id
           do
             echo "PSP_ID=$id" >> $GITHUB_ENV
