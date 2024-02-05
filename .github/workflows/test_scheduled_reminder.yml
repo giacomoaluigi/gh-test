@@ -41,6 +41,6 @@ jobs:
           # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           # For posting a simple plain text message
-          message: "🚑 Week: ${{ env.SUPPORT_WEEK }}\n PSP: ${{ env.PSP }}\nSSP: ${{ env.SSP }}."
+          slack-message: "🚑 Week: ${{ env.SUPPORT_WEEK }}\n PSP: ${{ env.PSP }}\nSSP: ${{ env.SSP }}."
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
