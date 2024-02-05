@@ -22,7 +22,7 @@ jobs:
       - name: test
         run: |
           TODAY=$(date "+%d %h %Y");
-          grep "$TODAY" support_reminder/calendar.csv
+          grep "$TODAY" support_reminder/calendar.csv --no-filename
 
       - name: Get current PSP and SSP
         run: |
@@ -34,7 +34,7 @@ jobs:
             echo "SUPPORT_WEEK=$support_week" >> $GITHUB_ENV
             echo "PSP=$psp" >> $GITHUB_ENV
             echo "SSP=$ssp" >> $GITHUB_ENV
-          done < <(grep $TODAY calendar.csv)
+          done < <(grep $TODAY calendar.csv --no-filename)
 
       - name: Post to a Slack channel
         id: slack
