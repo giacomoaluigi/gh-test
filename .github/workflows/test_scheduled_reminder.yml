@@ -22,7 +22,7 @@ jobs:
       - name: test
         run: |
           TODAY=$(date "+%d %h %Y");
-          grep $TODAY support_reminder/calendar.csv
+          grep "$TODAY" support_reminder/calendar.csv
 
       - name: Get current PSP and SSP
         run: |
