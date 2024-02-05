@@ -39,20 +39,14 @@ jobs:
       - name: Get PSP Slack ID
         run: |
           cd support_reminder
-          PSP=${{ env.PSP }}
-          while IFS="," read -r psp id
-          do
-            echo "PSP_ID=$id" >> $GITHUB_ENV
-          done < <(grep $PSP members.csv --no-filename)
+          echo "PSP_ID=$(grep "${{ env.PSP }}" members.csv --no-filename | awk -F "," '{print $2}')" >> $GITHUB_ENV
+
 
       - name: Get SSP Slack ID
         run: |
           cd support_reminder
-          PSP=${{ env.SSP }}
-          while IFS="," read -r ssp id
-          do
-            echo "SSP_ID=$id" >> $GITHUB_ENV
-          done < <(grep $SSP members.csv --no-filename)
+          echo "SSP_ID=$(grep "${{ env.SSP }}" members.csv --no-filename | awk -F "," '{print $2}')" >> $GITHUB_ENV
+
 
       - name: Post to a Slack channel
         id: slack
