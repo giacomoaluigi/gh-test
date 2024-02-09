@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       AWS_REGIONS: ${{ env.AWS_REGIONS }}
+    steps:
+      - name: Compute outputs
+        run: |
+          echo "ciao"
 
   plan:
       runs-on: ubuntu-latest
