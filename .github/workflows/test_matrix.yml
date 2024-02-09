@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGIONS: "us-east-1, eu-west-1"
+  AWS_REGIONS: us-east-1
   TERRAFORM_VERSION: ~1.5
 
 jobs:
