@@ -2,20 +2,26 @@ name: test matrix
 
 on:
   workflow_dispatch:
+    inputs:
+      aws_regions:
+        description: "AWS regions (comma separated)"
+        required: false
+        default: "us-east-1"
 
+# create action to check region name is valid
 env:
   AWS_REGIONS: "us-east-1, eu-west-1"
   TERRAFORM_VERSION: ~1.5
 
 jobs:
-  compute_regions:
-    runs-on: ubuntu-latest
-    outputs:
-      AWS_REGIONS: ${{ env.AWS_REGIONS }}
-    steps:
-      - name: Compute outputs
-        run: |
-          echo "ciao"
+  #compute_regions:
+  #  runs-on: ubuntu-latest
+  #  outputs:
+  #    AWS_REGIONS: ${{ env.AWS_REGIONS }}
+  #  steps:
+  #    - name: Compute outputs
+  #      run: |
+  #        echo "ciao"
 
   plan:
       runs-on: ubuntu-latest
@@ -23,7 +29,7 @@ jobs:
         matrix:
           program: [program1, program2, program3]
           stage: [dev, staging, prod]
-          region: ["${{ needs.compute_regions.outputs.AWS_REGIONS }}"]
+          region: ["${{ inputs.aws_regions }}"]
       environment: "${{ matrix.stage }}-plan"
 
       steps:
