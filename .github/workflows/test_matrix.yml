@@ -8,14 +8,14 @@ env:
   TERRAFORM_VERSION: ~1.5
 
 jobs:
- # compute_regions:
- #   runs-on: ubuntu-latest
- #   outputs:
- #     AWS_REGIONS: ${{ env.AWS_REGIONS }}
- #   steps:
- #     - name: Compute outputs
- #       run: |
- #         echo "AWS_REGIONS=[${{ env.AWS_REGIONS }}]" >> $GITHUB_OUTPUT
+  compute_regions:
+    runs-on: ubuntu-latest
+    outputs:
+      AWS_REGIONS: ${{ env.AWS_REGIONS }}
+    steps:
+      - name: Compute outputs
+        run: |
+          echo "AWS_REGIONS=${{ env.AWS_REGIONS }}" >> $GITHUB_OUTPUT
 
   plan:
       runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
         matrix:
           program: [program1, program2, program3]
           stage: [dev, staging, prod]
-          region: ["${{ env.AWS_REGIONS }}"]
+          region: ["${{ needs.compute_regions.outputs.AWS_REGIONS }}"]
       environment: "${{ matrix.stage }}-plan"
 
       steps:
