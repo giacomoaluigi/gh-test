@@ -36,6 +36,11 @@ jobs:
         - name: Check out repository
           uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
+        - name: get region prefix
+          id: region-prefix
+          run: |
+            run: echo "REGION_PREFIX=awk -F "-" '{print $1}' <<< "${{ matrix.region }}"" >> "$GITHUB_OUTPUT"
+
         - name: Current item
           run: |
-            echo "${{ matrix.region }} - ${{ matrix.program }} - ${{ matrix.stage }}"
+            echo "${{ steps.region-prefix.outputs.REGION_PREFIX }} - ${{ matrix.program }} - ${{ matrix.stage }}"
