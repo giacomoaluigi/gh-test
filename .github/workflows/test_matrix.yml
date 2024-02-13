@@ -39,7 +39,7 @@ jobs:
         - name: get region prefix
           id: region-prefix
           run: |
-            run: echo "REGION_PREFIX=awk -F "-" '{print $1}' <<< "${{ matrix.region }}"" >> "$GITHUB_OUTPUT"
+            run: echo "REGION_PREFIX=awk -F- '{print $1}' <<< "${{ matrix.region }}"" >> "$GITHUB_OUTPUT"
 
         - name: Current item
           run: |
