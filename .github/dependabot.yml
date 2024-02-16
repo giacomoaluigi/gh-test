@@ -1,6 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "docker"
-    directory: "/dockerfile-*"
+    directory: "/dockerfile-primo"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker"
+    directory: "/dockerfile-secondo"
     schedule:
       interval: "daily"
