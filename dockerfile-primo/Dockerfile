@@ -1,5 +1,5 @@
 FROM public.ecr.aws/datadog/lambda-extension:53 as lambda-ext
-FROM public.ecr.aws/lambda/python:3.9
+FROM public.ecr.aws/lambda/python:3.12
 COPY --from=lambda-ext /opt/extensions/ /opt/extensions
 
 WORKDIR ${LAMBDA_TASK_ROOT}
