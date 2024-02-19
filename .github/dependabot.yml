@@ -4,8 +4,29 @@ updates:
     directory: "/dockerfile-primo"
     schedule:
       interval: "daily"
+    groups:
+      lambda-extension:
+        patterns:
+          - "lambda-extension"
+      python-version:
+        patterns:
+          - "python"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "docker"
     directory: "/dockerfile-secondo"
     schedule:
       interval: "daily"
+    groups:
+      lambda-extension:
+        patterns:
+          - "lambda-extension"
+      python-version:
+        patterns:
+          - "python"
+        update-types:
+          - "minor"
+          - "patch"
+
