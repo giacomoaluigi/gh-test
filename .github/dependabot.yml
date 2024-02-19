@@ -17,8 +17,6 @@ updates:
     directory: "/dockerfile-primo"
     schedule:
       interval: "daily"
-      time: "16:25"
-      timezone: "Europe/Rome"
     groups:
       lambda-extension:
         patterns:
