@@ -1,17 +1,17 @@
 version: 2
 updates:
-#  # Python
-#  - package-ecosystem: "pip"
-#    directory: "/"
-#    schedule:
-#      interval: "daily"
-#      time: "15:30"
-#      timezone: "Europe/Rome"
-#    groups:
-#      pip:
-#        update-types:
-#          - "minor"
-#          - "patch"
+# Python
+  - package-ecosystem: "pip"
+    directory: "/python-test"
+    schedule:
+      interval: "daily"
+      time: "17:58"
+      timezone: "Europe/Rome"
+    groups:
+       pip:
+         update-types:
+           - "minor"
+           - "patch"
 
   - package-ecosystem: "docker"
     directory: "/dockerfile-primo"
