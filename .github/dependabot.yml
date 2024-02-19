@@ -35,7 +35,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "12:20"
+      time: "14:40"
       timezone: "Europe/Rome"
     groups:
       pip:
