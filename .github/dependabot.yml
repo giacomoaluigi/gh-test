@@ -29,3 +29,16 @@ updates:
         update-types:
           - "minor"
           - "patch"
+
+  # Python
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "15:20"
+      timezone: "Europe/Rome"
+    groups:
+      pip:
+        update-types:
+          - "minor"
+          - "patch"
