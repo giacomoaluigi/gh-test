@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 boto3 = "==1.26.158"
 terrasnek = "==0.1.13"
-datadog-lambda = "==4.80.0"
+datadog-lambda = "==5.88.0"
 aws-lambda-powertools = "==2.26.0"
 
 [dev-packages]
