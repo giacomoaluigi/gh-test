@@ -2,7 +2,7 @@ version: 2
 updates:
 # Python
   - package-ecosystem: "pip"
-    directory: "/python-*"
+    directory: "/python-*/*"
     schedule:
       interval: "daily"
     groups:
@@ -12,7 +12,7 @@ updates:
            - "patch"
 
   - package-ecosystem: "docker"
-    directory: "/dockerfile-*"
+    directory: "/dockerfile-*/*"
     schedule:
       interval: "daily"
     groups:
