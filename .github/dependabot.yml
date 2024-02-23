@@ -2,13 +2,11 @@ version: 2
 updates:
 # Python
   - package-ecosystem: "pip"
-    directory: "/python-test"
+    directory: "/"
     schedule:
       interval: "daily"
-      time: "17:58"
-      timezone: "Europe/Rome"
     groups:
-       pip:
+       python-packages:
          update-types:
            - "minor"
            - "patch"
