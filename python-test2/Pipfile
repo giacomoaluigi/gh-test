@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+boto3 = "==1.26.158"
+terrasnek = "==0.1.13"
+datadog-lambda = "==4.80.0"
+aws-lambda-powertools = "==2.26.0"
+
+[dev-packages]
+black = "==23.3.0"
+flake8 = "==6.0.0"
+pytest = "==7.4.0"
+pytest-mock = "==3.11.1"
+exceptiongroup = "==1.1.1"
+coverage = "==7.3.0"
+moto = "==4.2.0"
+
+[requires]
+python_version = "3.9"

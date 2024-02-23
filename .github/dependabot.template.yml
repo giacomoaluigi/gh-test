@@ -2,7 +2,7 @@ version: 2
 updates:
 # Python
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/python-*"
     schedule:
       interval: "daily"
     groups:
@@ -12,22 +12,7 @@ updates:
            - "patch"
 
   - package-ecosystem: "docker"
-    directory: "/dockerfile-primo"
-    schedule:
-      interval: "daily"
-    groups:
-      lambda-extension:
-        patterns:
-          - "lambda-extension"
-      python-version:
-        patterns:
-          - "python"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "docker"
-    directory: "/dockerfile-secondo"
+    directory: "/dockerfile-*"
     schedule:
       interval: "daily"
     groups:
