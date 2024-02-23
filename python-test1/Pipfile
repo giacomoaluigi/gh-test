@@ -16,7 +16,7 @@ pytest = "==7.4.0"
 pytest-mock = "==3.11.1"
 exceptiongroup = "==1.1.1"
 coverage = "==7.3.0"
-moto = "==4.2.0"
+moto = "==5.0.2"
 
 [requires]
 python_version = "3.9"
