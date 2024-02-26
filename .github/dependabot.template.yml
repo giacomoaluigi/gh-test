@@ -2,7 +2,7 @@ version: 2
 updates:
 # Python
   - package-ecosystem: "pip"
-    directory: "/python-*/Pipfile*"
+    directory: "python-*/Pipfile*"
     schedule:
       interval: "daily"
     groups:
@@ -13,7 +13,7 @@ updates:
 
   # actions
   - package-ecosystem: "github-actions"
-    directory: "/.github/actions/*/action.yml"
+    directory: ".github/actions/*/action.yml"
     schedule:
       interval: "weekly"
     groups:
@@ -24,7 +24,7 @@ updates:
 
   # docker
   - package-ecosystem: "docker"
-    directory: "/dockerfile-*/Dockerfile"
+    directory: "dockerfile-*/Dockerfile"
     schedule:
       interval: "daily"
     groups:
