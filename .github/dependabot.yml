@@ -3,7 +3,7 @@
 version: 2
 updates:
   - package-ecosystem: pip
-    directory: /python-test1
+    directory: python-test1
     schedule:
       interval: daily
     groups:
@@ -12,7 +12,7 @@ updates:
           - minor
           - patch
   - package-ecosystem: pip
-    directory: /python-test2
+    directory: python-test2
     schedule:
       interval: daily
     groups:
@@ -20,8 +20,44 @@ updates:
         update-types:
           - minor
           - patch
+  - package-ecosystem: pip
+    directory: python-test4
+    schedule:
+      interval: daily
+    groups:
+      python-packages:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: .github/actions/actions_1
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: .github/actions/actions_2
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: .github/actions/actions_3
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
   - package-ecosystem: docker
-    directory: /dockerfile-primo
+    directory: dockerfile-primo
     schedule:
       interval: daily
     groups:
@@ -35,7 +71,7 @@ updates:
           - minor
           - patch
   - package-ecosystem: docker
-    directory: /dockerfile-secondo
+    directory: dockerfile-secondo
     schedule:
       interval: daily
     groups:
