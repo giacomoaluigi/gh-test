@@ -13,7 +13,7 @@ updates:
 
   # actions
   - package-ecosystem: "github-actions"
-    directory: "/.github/actions/**/"
+    directory: "/.github/actions/*/"
     schedule:
       interval: "weekly"
     groups:
