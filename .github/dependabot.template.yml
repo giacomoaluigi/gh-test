@@ -11,6 +11,18 @@ updates:
            - "minor"
            - "patch"
 
+  # actions
+  - package-ecosystem: "github-actions"
+    directory: "/.github/actions/**/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # docker
   - package-ecosystem: "docker"
     directory: "/dockerfile-*/*"
     schedule:
