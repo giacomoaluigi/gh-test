@@ -7,7 +7,7 @@ updates:
     schedule:
       interval: daily
     groups:
-      python-packages:
+      pythonn-packages:
         update-types:
           - minor
           - patch
@@ -16,7 +16,43 @@ updates:
     schedule:
       interval: daily
     groups:
-      python-packages:
+      pythonn-packages:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: pip
+    directory: /python-test4
+    schedule:
+      interval: daily
+    groups:
+      pythonn-packages:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: /.github/actions/actions_1
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: /.github/actions/actions_2
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: /.github/actions/actions_3
+    schedule:
+      interval: weekly
+    groups:
+      actions:
         update-types:
           - minor
           - patch
