@@ -20,6 +20,33 @@ updates:
         update-types:
           - minor
           - patch
+  - package-ecosystem: github-actions
+    directory: /.github/actions/actions_1
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: /.github/actions/actions_2
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: github-actions
+    directory: /.github/actions/actions_3
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
   - package-ecosystem: docker
     directory: /dockerfile-primo
     schedule:
