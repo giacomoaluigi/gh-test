@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - '/python-*/**'
-      - '/.github/dependabot.template.yml'
+      - 'python-*/*'
+      - '.github/dependabot.template.yml'
   workflow_dispatch:
 
 jobs:
