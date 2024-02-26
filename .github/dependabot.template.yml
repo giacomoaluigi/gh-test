@@ -2,18 +2,18 @@ version: 2
 updates:
 # Python
   - package-ecosystem: "pip"
-    directory: "/python-*/*"
+    directory: "/python-*/Pipfile*"
     schedule:
       interval: "daily"
     groups:
-       pythonn-packages:
+       python-packages:
          update-types:
            - "minor"
            - "patch"
 
   # actions
   - package-ecosystem: "github-actions"
-    directory: "/.github/actions/*/"
+    directory: "/.github/actions/*/action.yml"
     schedule:
       interval: "weekly"
     groups:
@@ -24,7 +24,7 @@ updates:
 
   # docker
   - package-ecosystem: "docker"
-    directory: "/dockerfile-*/"
+    directory: "/dockerfile-*/Dockerfile"
     schedule:
       interval: "daily"
     groups:
