@@ -58,6 +58,7 @@ jobs:
     steps:
       - name: test
         run: |
-          echo "TEST=$((${{ inputs.test }} == 'yes' ? '[TEST] ' : '')); $TEST 🚑 Support Week:"
+          [[ ${{ inputs.test }} == "yes" ]] && echo "[TEST] " || echo ""
+          echo "🚑 Support Week:"
 
 
