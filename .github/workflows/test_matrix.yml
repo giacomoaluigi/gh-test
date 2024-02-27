@@ -56,9 +56,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Test or not
+        run: |
+          echo "TEST=$([[ ${{ inputs.test }} == "yes" ]] && echo ":hammer_and_wrench: [TEST] " || echo "")" >> $GITHUB_ENV
+
       - name: test
         run: |
-          [[ ${{ inputs.test }} == "yes" ]] && echo "[TEST] " || echo ""
-          echo "🚑 Support Week:"
+          echo "$TEST 🚑 Support Week:"
 
 
