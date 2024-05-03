@@ -1,4 +1,4 @@
-FROM public.ecr.aws/datadog/lambda-extension:53 as lambda-ext
+FROM public.ecr.aws/datadog/lambda-extension:57 as lambda-ext
 FROM public.ecr.aws/lambda/python:3.9
 COPY --from=lambda-ext /opt/extensions/ /opt/extensions
 
