@@ -1,0 +1,15 @@
+[
+    {
+      "env":"dev",
+      "runOn":"always"
+    },
+    {
+      "env":"staging",
+      "runOn":"main"
+    },
+    {
+      "env":"prod",
+      "runOn":"main"
+    }
+  ]
+  
