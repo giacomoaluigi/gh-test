@@ -1,0 +1,42 @@
+name: Release
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  semantic_release:
+    name: Semantic Release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+
+    - name: Release
+      uses: cycjimmy/semantic-release-action@cb425203a562475bca039ba4dbf90c7f9ac790f4 # v4.1.0
+      id: semantic-release
+      with:
+        extra_plugins: |
+          @semantic-release/exec
+          @semantic-release/changelog
+          @semantic-release/git
+        branches: |
+          [
+            "+([0-9])?(.{+([0-9]),x}).x",
+            "main",
+            "next",
+            "next-major",
+            {
+              "name": "beta",
+              "prerelease": true
+            },
+            {
+              "name": "alpha",
+              "prerelease": true
+            }
+          ]
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
