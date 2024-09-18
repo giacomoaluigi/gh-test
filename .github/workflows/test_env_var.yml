@@ -1,4 +1,4 @@
-name: Mixed inputs
+name: test env var
 
 on:
   workflow_dispatch:
@@ -32,7 +32,6 @@ jobs:
       env:
         GIT_SHA: ${{ github.sha }}
       run: |
-        echo "GIT_SHA=${GIT_SHA}" >> $GITHUB_ENV
         cat << EOF | tee payload.json
         {
           "revision": "${GIT_SHA}",
