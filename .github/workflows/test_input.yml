@@ -41,6 +41,7 @@ jobs:
           run: echo "SIZE=4" >> "$GITHUB_OUTPUT"
           else
           run: echo "SIZE=${{ inputs.size }}" >> "$GITHUB_OUTPUT"
+          fi
       
       - name: Print size
         shell: bash
