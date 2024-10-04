@@ -1,0 +1,46 @@
+#
+#  Copyright 2022 Hyland Software, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+name: Release Lambda 
+
+on:
+  workflow_dispatch:
+    inputs:
+      size:
+        description: Size
+        required: false
+        default: "1"
+
+jobs:
+  check_size:
+    name: Check size input
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+
+      - name: Check size
+        shell: bash
+        run: |
+          if (( ${{ inputs.size }} > 4 )); then
+          echo "WARNING: max size = 4. Forcing size to 4"
+          ${{ inputs.size }} = 4
+          fi
+      
+      - name: Print size
+        shell: bash
+        run: echo ${{ inputs.size }}
+          
