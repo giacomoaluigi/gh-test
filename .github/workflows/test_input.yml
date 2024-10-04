@@ -37,7 +37,7 @@ jobs:
         run: |
           if (( ${{ inputs.size }} > 4 )); then
           echo "WARNING: max size = 4. Forcing size to 4"
-          ${{ inputs.size }} = 4
+          inputs.size = 4
           fi
       
       - name: Print size
