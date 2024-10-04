@@ -38,9 +38,9 @@ jobs:
         run: |
           if (( ${{ inputs.size }} > 4 )); then
           echo "WARNING: max size = 4. Forcing size to 4"
-          run: echo "SIZE=4" >> "$GITHUB_OUTPUT"
+          echo "SIZE=4" >> "$GITHUB_OUTPUT"
           else
-          run: echo "SIZE=${{ inputs.size }}" >> "$GITHUB_OUTPUT"
+          echo "SIZE=${{ inputs.size }}" >> "$GITHUB_OUTPUT"
           fi
       
       - name: Print size
