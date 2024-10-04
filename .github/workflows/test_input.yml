@@ -45,5 +45,6 @@ jobs:
       
       - name: Print size
         shell: bash
-        run: echo ${{ steps.check-size.outputs.SIZE }}
+        run: |
+          echo "::notice:: ${{ steps.check-size.outputs.SIZE }}"
           
