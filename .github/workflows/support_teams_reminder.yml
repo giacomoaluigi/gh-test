@@ -1,0 +1,63 @@
+name: Support Teams reminder
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        type: string
+        description: flag if it's test or not
+        default: ""
+        required: false
+  schedule:
+    - cron: "0 9 * * MON"
+
+jobs:
+  support-reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Get current PSP and SSP
+        run: |
+          cd support_reminder
+          # Get monday date of current week
+          MONDAY=$(date -d "$(date +%u) days ago + 1 day" "+%d %h %Y");
+          while IFS="," read -r support_week psp ssp
+          do
+            echo "SUPPORT_WEEK=$support_week" >> $GITHUB_ENV
+            echo "PSP=$psp" >> $GITHUB_ENV
+            echo "SSP=$ssp" >> $GITHUB_ENV
+          done < <(grep "$MONDAY" calendar.csv --no-filename)
+
+      - name: Send a message to Microsoft Teams hxp-ops-readiness-team channel
+        run: |
+          curl -H 'Content-Type: application/json' \
+          -X POST \
+          -d '{
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "themeColor": "0076D7",
+            "summary": "${{ inputs.test }} Weekly Support Reminder",
+            "sections": [
+              {
+                "activityTitle": "${{ inputs.test }} Weekly Support Reminder",
+                "activitySubtitle": "${{ env.SUPPORT_WEEK }}",
+                "facts": [
+                  {
+                    "name": "Primary Support Person",
+                    "value": "${{ env.PSP }}"
+                  },
+                  {
+                    "name": "Secondary Support Person",
+                    "value": "${{ env.SSP }}"
+                  }
+                ],
+                "markdown": true
+              }
+            ]
+          }' \
+          ${{ secrets.TEAMS_OPS_SUPPORT_INCOMING_WEBHOOK }}
+
+
