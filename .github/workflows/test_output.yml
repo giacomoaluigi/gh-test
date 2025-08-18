@@ -23,5 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: example_job
     steps:
-      - run: echo "The value from step1 is: ${{ needs.example_job.outputs.step1_output }}"
-      - run: echo "The value from step2 is: ${{ needs.example_job.outputs.step2_output }}"
+      - id: step1
+        run: echo "step1 output " ${{ needs.example_job.outputs.step1_output }}
+      - id: step2
+        run: echo "step2 output " ${{ needs.example_job.outputs.step2_output }}
