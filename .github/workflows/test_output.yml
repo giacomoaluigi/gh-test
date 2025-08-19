@@ -10,14 +10,14 @@ permissions:
 jobs:
   example_job:
     runs-on: ubuntu-latest
+    outputs:
+      step1_output: ${{ steps.step1.outputs.output_name }}
+      step2_output: ${{ steps.step2.outputs.another_output }}
     steps:
       - id: step1
         run: echo "output_name=some_value" >> "$GITHUB_OUTPUT"
       - id: step2
         run: echo "another_output=another_value" >> "$GITHUB_OUTPUT"
-    outputs:
-      step1_output: ${{ steps.step1.outputs.output_name }}
-      step2_output: ${{ steps.step2.outputs.another_output }}
 
   another_job:
     runs-on: ubuntu-latest
